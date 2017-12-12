@@ -13,6 +13,7 @@ import Control.Monad.Trans.Class (lift)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Random (RANDOM, randomInt)
 import DOM (DOM) as DOM
+import Partial.Unsafe ( unsafePartial )
 
 -- ADT representing your pick in the game
 data RockPaperScissors = Rock | Paper | Scissors
@@ -63,11 +64,12 @@ initialState = Nothing
 randomPick :: Eff (random :: RANDOM) RockPaperScissors
 randomPick = do
   x <- randomInt 1 3
-  pure $ intToPick x
-  where 
-    intToPick 2 = Rock
-    intToPick 1 = Paper
-    intToPick _ = Scissors
+  pure $ unsafePartial $ intToPick x
+  where
+    intToPick :: Partial => Int -> RockPaperScissors
+    intToPick 1 = Rock
+    intToPick 2 = Paper
+    intToPick 3 = Scissors
 
 -- A function to update the game state by making a random computer pick and combining with the player's choice
 performAction :: T.PerformAction _ GameState _ RockPaperScissors

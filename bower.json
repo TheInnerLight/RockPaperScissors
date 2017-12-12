@@ -1,0 +1,21 @@
+{
+  "name": "rockpaperscissors",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-aff": "^4.0.0",
+    "purescript-coroutines": "^4.0.0",
+    "purescript-dom": "^4.0.0",
+    "purescript-freet": "^3.0.0",
+    "purescript-profunctor-lenses": "^3.0.0",
+    "purescript-react-dom": "^4.0.0",
+    "purescript-react": "^4.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0"
+  }
+}

@@ -48,12 +48,12 @@ determineWinner _ _            = Draw
 
 -- A function that, given the game state, extracts the computer's pick text
 computerPickText :: GameState -> String
-computerPickText Nothing               = ""
+computerPickText Nothing                       = ""
 computerPickText (Just (Tuple _ computerPick)) = show computerPick
 
 -- A function that, given the game state, extracts the name of the winner
 winnerName :: GameState -> String
-winnerName Nothing                 = ""
+winnerName Nothing                                = ""
 winnerName (Just (Tuple playerPick computerPick)) = show $ determineWinner playerPick computerPick
 
 -- the initial state of the game is nothing
